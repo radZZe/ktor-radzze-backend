@@ -3,6 +3,7 @@ package com.radzze.service
 import com.radzze.db.DatabaseFactory.databaseQuery
 import com.radzze.db.UserTable
 import com.radzze.models.User
+import com.radzze.security.hash
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.insert
@@ -18,7 +19,7 @@ class UserServiceImpl : UserService {
                 it[email] = params.email
                 it[name] = params.name
                 it[surname] = params.surname
-                it[password] = params.password
+                it[password] = hash(params.password)
                 it[createdAt] = LocalDateTime.now()
             }
         }

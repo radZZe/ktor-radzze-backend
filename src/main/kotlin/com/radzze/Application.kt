@@ -24,7 +24,6 @@ fun Application.module() {
     val repository = UserRepositoryImpl(service)
     configureMonitoring()
     configureSockets()
-
     authRoutes(repository)
     configureSecurity()
     configureRouting()
